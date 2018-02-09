@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" type="text/css" href="mcGrid.css">
+	</head>
+	<body>
+		<div class="mcGrid-box" id="mcGrid1">
+            <!--
+            <div class="mcGrid-box-header">
+				<div class="mcGrid-row-num mc-center" style="height: 25px; line-height: 25px">No.</div>
+				<div class="mcGrid-row-header" style="height: 25px; line-height: 25px;">
+					<div class="col-size-1">이름</div>
+					<div class="col-size-5">제목</div>
+					<div class="col-size-2">시간</div>
+				</div>
+            </div>
+            <div class="mcGrid-box-list">
+				<div class="mcGrid-row">
+					<div class="mcGrid-row-num mc-cneter" style="height: 25px; line-height: 25px;">1</div>
+					<div class="mcGrid-row-data">
+						<div class="col-size-1 mc-center" style="height: 25px; line-height: 25px;">학교종이</div>
+						<div class="col-size-5 mc-center" style="height: 25px; line-height: 25px;">학교종이</div>
+						<div class="col-size-3 mc-center" style="height: 25px; line-height: 25px;">1234</div>
+					</div>
+				</div>
+				<div class="mcGrid-row">
+					<div class="mcGrid-row-num mc-cneter" style="height: 25px; line-height: 25px;">2</div>
+					<div class="mcGrid-row-data">
+						<div class="col-size-1 mc-center" style="height: 25px; line-height: 25px;">학교종이</div>
+						<div class="col-size-5 mc-center" style="height: 25px; line-height: 25px;">학교종이</div>
+						<div class="col-size-3 mc-center" style="height: 25px; line-height: 25px;">1234</div>
+					</div>
+				</div>
+				<div class="mcGrid-row">
+					<div class="mcGrid-row-num mc-cneter" style="height: 25px; line-height: 25px;">3</div>
+					<div class="mcGrid-row-data">
+						<div class="col-size-1 mc-center" style="height: 25px; line-height: 25px;">학교종이</div>
+						<div class="col-size-5 mc-center" style="height: 25px; line-height: 25px;">학교종이</div>
+						<div class="col-size-3 mc-center" style="height: 25px; line-height: 25px;">1234</div>
+					</div>
+				</div>
+            </div>
+			<div class="pagination">
+				<a href="#">&laquo;</a>
+				<a href="#">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">&raquo;</a>
+			</div>
+			-->
+          </div>
+		<script type="text/javascript" src="mcGrid.js"></script>
+		<script type="text/javascript">
+		
+			// mcGrid 헤더 필드 선언
+			var mcHeader = [
+				  {id: "SUBJECT", title: "제목", colSize: 5, align: "left"}
+				, {id: "TIME"	, title: "시간", colSize: 3, align: "center"}
+			];
+			// mcGrid 기본값 설정
+			var mcDefault = {
+				  headerResize: true
+				, headerSort: true
+				, rowNum: true
+				, paging: true
+				, maxPageCnt: 5
+				, maxListCnt: 50
+				, lineHeight: "25px"
+			};
+			// mcGrid 객체 생성
+			var mcGrid = new McGrid("mcGrid1");
+			mcGrid.setDefault(mcDefault);
+			mcGrid.setHeader(mcHeader);
+			mcGrid.addEvent('rowClick', mcGrid1_RowClick);
+			mcGrid.addEvent('pageClick', mcGrid1_PageClick);
+			
+
+			function mcGrid1_RowClick(rowObj, rowIdx) {
+				console.log('mcGrid1_rowClick');
+				console.log(rowObj, rowIdx);
+			}
+			function mcGrid1_PageClick(pageNum, start, end) {
+				console.log('mcGrid1_PageClick');
+				console.log(pageNum);
+				
+				fnSearch(start, end)
+			}
+			
+			// 테스트 데이터
+			var arrList = [];
+			for(var i=0; i< 500; i++){
+				arrList[i] = {SUBJECT: "AA", TIME:"12:30"}; 
+			}
+
+			function fnSearch(start, end) {
+				var cArrList = arrList.filter(function(list, i) {
+					return i >= start -1 && i <= end -1;
+				});
+				mcGrid.setList(cArrList, arrList.length);
+			}
+			fnSearch(1, 50);
+		</script>
+	</body>
+</html>

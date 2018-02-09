@@ -1,0 +1,150 @@
+/* 
+mcGrid.css
+*/
+/* mcGrid Outline */
+.mcGrid-box{
+    clear: both;
+    width: 100%;
+}
+
+/* mcGrid Header */
+.mcGrid-box > .mcGrid-box-header > div{
+	position: relative;
+	float: left;
+}
+.mcGrid-box > .mcGrid-box-header > .mcGrid-row-header{
+    width: calc(100% - 40px);
+}
+.mcGrid-box > .mcGrid-box-header > .mcGrid-row-num{
+	position: relative;
+	width: 40px;
+    height: 20px;
+    background: rgb(243, 130, 130);
+    box-shadow: 0px 0px 1px 1px #888888;
+	font-weight: bold;
+}
+.mcGrid-box > .mcGrid-box-header > .mcGrid-row-header div{
+    position: relative;
+    float: left;
+    background: rgb(243, 130, 130);
+    box-shadow: 0px 0px 1px 1px #888888;
+	font-weight: bold;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* mcGrid Body */
+.mcGrid-box > .mcGrid-box-list > .mcGrid-row > div{
+	position: relative;
+	float: left;
+}
+.mcGrid-box > .mcGrid-box-list > .mcGrid-row > .mcGrid-row-num{
+	width: 40px;
+	box-shadow: 0px 0px 1px #888888;
+	font-weight: bold;
+}
+.mcGrid-box > .mcGrid-box-list > .mcGrid-row > .mcGrid-row-data{
+	width: calc(100% - 40px);
+}
+.mcGrid-box > .mcGrid-box-list > .mcGrid-row > .mcGrid-row-data div{
+	position: relative;
+	float: left;
+	box-shadow: 0px 0px 1px #888888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.mcGrid-box > .mcGrid-box-list > .mcGrid-row:nth-child(2n) div{
+    background: rgb(230, 230, 221);
+}
+.mcGrid-box > .mcGrid-box-list > .mcGrid-row:hover div{
+    background-color:rgb(143, 216, 235);
+    cursor: pointer;
+}
+.mcGrid-box > .mcGrid-box-list > .mcGrid-row.selected div{
+    background-color: gray !important;
+}
+/*
+.mcGrid-box-list > .mcGrid-row .mcGrid-row-data div[style*="left"]{
+    text-indent: 5px;
+}
+*/
+.col-size-1{
+    width: 12.5%;
+}
+.col-size-2{
+    width: 25%;
+}
+.col-size-3{
+    width: 37.5%;
+}
+.col-size-4{
+    width: 50%;
+}
+.col-size-5{
+    width: 62.5%;
+}
+.col-size-6{
+    width: 75%;
+}
+.col-size-7{
+    width: 87.5%;
+}
+.col-size-8{
+    width: 100%;
+}
+/* mcGrid Pagination */
+.mcGrid-box > .pagination{
+    position: relative;
+    float: left;
+    left: 50%;
+    top: 5px;
+    transform: translateX(-50%);
+}
+.mcGrid-box > .pagination a{
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+
+}
+.mcGrid-box > .pagination a:hover{
+    background: rgb(143, 216, 235);
+    cursor: pointer;
+}
+
+/* mcGrid Common*/
+.mcGrid-box .mc-left{
+	text-align: left;
+	text-indent: 5px;
+}
+.mcGrid-box .mc-right{
+	text-align: right;
+}
+.mcGrid-box .mc-center{
+	text-align: center;
+}
+.mcGrid-box .mc-display-none{
+	display: none;
+}
+.mcGrid-box .mc-width-100{
+    width: 100% !important;
+}
+.mcGrid-hr{
+    position: absolute;
+    top: 0px;
+    right: -1px;
+    bottom: 0px;
+    width: 5px;
+    margin: 0px;
+    overflow: hidden;
+    cursor: col-resize;
+    border: 0px;
+    z-index: 999;
+}
