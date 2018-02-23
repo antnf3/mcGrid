@@ -19,16 +19,16 @@ mcGrid.css
 	position: relative;
 	width: 40px;
     height: 20px;
-    background: rgb(243, 130, 130);
-    box-shadow: 0px 0px 1px 1px #888888;
-	font-weight: bold;
+    background: rgb(51,51,51);
+    font-weight: bold;
+    color: rgb(255,255,255);
 }
 .mcGrid-box > .mcGrid-box-header > .mcGrid-row-header div{
     position: relative;
     float: left;
-    background: rgb(243, 130, 130);
-    box-shadow: 0px 0px 1px 1px #888888;
-	font-weight: bold;
+    background: rgb(51,51,51);
+    font-weight: bold;
+    color: rgb(255,255,255);
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -44,7 +44,6 @@ mcGrid.css
 }
 .mcGrid-box > .mcGrid-box-list > .mcGrid-row > .mcGrid-row-num{
 	width: 40px;
-	box-shadow: 0px 0px 1px #888888;
 	font-weight: bold;
 }
 .mcGrid-box > .mcGrid-box-list > .mcGrid-row > .mcGrid-row-data{
@@ -53,7 +52,6 @@ mcGrid.css
 .mcGrid-box > .mcGrid-box-list > .mcGrid-row > .mcGrid-row-data div{
 	position: relative;
 	float: left;
-	box-shadow: 0px 0px 1px #888888;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

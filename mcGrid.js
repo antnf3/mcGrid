@@ -115,7 +115,7 @@ var McGrid = (function() {
             
             // row num
             var rowNumDiv = document.createElement('div');
-            rowNumDiv.className = "mcGrid-row-num mc-center" + (!this.isRowNum ? "mc-display-none" : "");
+            rowNumDiv.className = "mcGrid-row-num mc-center" + (!this.isRowNum ? " mc-display-none" : "");
             rowNumDiv.innerHTML = this.nStartListNum + j;
             rowNumDiv.style.height = this.nLineHeight;
             rowNumDiv.style.lineHeight = this.nLineHeight;
