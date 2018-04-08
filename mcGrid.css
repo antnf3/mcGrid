@@ -22,12 +22,14 @@ mcGrid.css
     background: rgb(51,51,51);
     font-weight: bold;
     color: rgb(255,255,255);
+    font-size: 14px;
 }
 .mcGrid-box > .mcGrid-box-header > .mcGrid-row-header div{
     position: relative;
     float: left;
     background: rgb(51,51,51);
     font-weight: bold;
+    font-size: 14px;
     color: rgb(255,255,255);
 
     overflow: hidden;
@@ -44,7 +46,8 @@ mcGrid.css
 }
 .mcGrid-box > .mcGrid-box-list > .mcGrid-row > .mcGrid-row-num{
 	width: 40px;
-	font-weight: bold;
+    font-weight: bold;
+    font-size: 14px;
 }
 .mcGrid-box > .mcGrid-box-list > .mcGrid-row > .mcGrid-row-data{
 	width: calc(100% - 40px);
@@ -57,9 +60,10 @@ mcGrid.css
     white-space: nowrap;
     word-wrap: break-word;
     word-break: break-all;
+    font-size: 14px;
 }
 .mcGrid-box > .mcGrid-box-list > .mcGrid-row:nth-child(2n) div{
-    background: rgb(230, 230, 221);
+    background: #e5e5e5;
 }
 .mcGrid-box > .mcGrid-box-list > .mcGrid-row:hover div{
     background-color:rgb(143, 216, 235);
@@ -108,9 +112,8 @@ mcGrid.css
 .mcGrid-box > .pagination a{
     color: black;
     float: left;
-    padding: 8px 16px;
+    padding: 4px 8px;
     text-decoration: none;
-
 }
 .mcGrid-box > .pagination a:hover{
     background: rgb(143, 216, 235);
