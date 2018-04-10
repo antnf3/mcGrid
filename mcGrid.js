@@ -139,7 +139,7 @@ var McGrid = (function() {
 					}
 				}else{
 					var btn = document.createElement('button');
-					btn.textContent = "수정";
+					btn.textContent = this.arrHeader[k].title;
 					btn.style.width = "100%";
 					btn.style.height = "100%";
 					//btn.onclick = this.fnbtn_onClick;
