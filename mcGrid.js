@@ -124,21 +124,32 @@ var McGrid = (function() {
             for(var k = 0; k < this.arrHeader.length; k++) {
                 var hidden = this.arrHeader[k].hidden || false;
                 var colDiv = document.createElement('div');
-                colDiv.className = "col-size-" + this.arrHeader[k].colSize
-                                + ((this.arrHeader[k].align || "") != "" ? " mc-"+this.arrHeader[k].align : "")
-                                + (hidden ? " mc-display-none" : "");
-                if(this.isObj){
-                    colDiv.innerHTML = arrList[j][this.arrHeader[k].id];
-                    colDiv.title = arrList[j][this.arrHeader[k].id]
-                }else{
-                    colDiv.innerHTML = arrList[j][k];
-                    colDiv.title = arrList[j][k];
-                }
-                colDiv.style.height = this.nLineHeight;
-                colDiv.style.lineHeight = this.nLineHeight;
-                colDiv.style.width = this.arrHeadrow.length > 0 ? (this.arrHeadrow[k]/100) + "%" : "";
-
-                rowDataDiv.appendChild(colDiv);
+				
+				colDiv.className = "col-size-" + this.arrHeader[k].colSize
+								+ ((this.arrHeader[k].align || "") != "" ? " mc-"+this.arrHeader[k].align : "")
+								+ (hidden ? " mc-display-none" : "");
+									
+				if(this.arrHeader[k].type != "button"){
+					if(this.isObj){
+						colDiv.innerHTML = arrList[j][this.arrHeader[k].id];
+						colDiv.title = arrList[j][this.arrHeader[k].id]
+					}else{
+						colDiv.innerHTML = arrList[j][k];
+						colDiv.title = arrList[j][k];
+					}
+				}else{
+					var btn = document.createElement('button');
+					btn.textContent = "수정";
+					btn.style.width = "100%";
+					btn.style.height = "100%";
+					//btn.onclick = this.fnbtn_onClick;
+					colDiv.appendChild(btn);
+				}
+				colDiv.style.height = this.nLineHeight;
+				colDiv.style.lineHeight = this.nLineHeight;
+				colDiv.style.width = this.arrHeadrow.length > 0 ? (this.arrHeadrow[k]/100) + "%" : "";
+					
+				rowDataDiv.appendChild(colDiv);
             }
             rowDiv.appendChild(rowDataDiv);
             boxListdiv.appendChild(rowDiv);
@@ -149,6 +160,10 @@ var McGrid = (function() {
         if(this.Events['rowClick']){
 			
             this.clickEvent(this.Events['rowClick']);
+        }
+        if(this.Events['cellClick']){
+			
+            this.cellClickEvent(this.Events['cellClick']);
         }
         // 페이징처리 추가
         if(this.isPaging){
@@ -184,6 +199,38 @@ var McGrid = (function() {
         }
     };
 
+    McGrid.prototype.cellClickEvent = function(fnCallBack) {
+		
+		var _self = this;
+		var rowList = document.querySelectorAll('#' + this.target + '.mcGrid-box > .mcGrid-box-list > div');
+        for(var row = 0; row < rowList.length; row++) {
+            
+            var cellList = rowList[row].children[1].children;
+            //console.log(cellList);
+            for(var cell = 0; cell < cellList.length; cell++){
+                (function(c) {
+                    cellList[c].addEventListener('click', function(e) {
+                        for(var i = 0; i < rowList.length; i++) {
+                            rowList[i].classList.remove('selected');
+                        }
+
+                        var selectedRow = e.currentTarget.parentElement.parentElement;
+                        selectedRow.classList.add('selected');
+                        //console.log(selectedRow);
+                        var rowVal = selectedRow.children;
+                        var arrRow = {};
+                        //arrRow[_self.arrHeader[0].id] = rowVal[0].innerHTML;	// row num
+                        var childRowVal = rowVal[1].children;
+                        for(var j = 0; j < childRowVal.length; j++) {
+                            arrRow[_self.arrHeader[j].id] = childRowVal[j].textContent;	// data value
+                        }
+                        fnCallBack(arrRow, c);
+                    });
+                })(cell);
+            }
+        }
+    };
+	
 	McGrid.prototype.headerClickEvent = function() {
 		var _self = this;
 		var headerRow = document.querySelectorAll('#' + this.target + '.mcGrid-box > .mcGrid-box-header > div');
@@ -447,5 +494,19 @@ var McGrid = (function() {
             }
         }
     };
+	McGrid.prototype.fnbtn_onClick = function(e) {
+		var _self = this;
+		e.stopImmediatePropagation();
+		console.log(e.currentTarget.parentElement.parentElement)
+		var rowEm = e.currentTarget.parentElement.parentElement.children;
+		var arrRow = {};
+		
+		for(var j = 0; j < rowEm.length; j++) {
+			arrRow[_self.arrHeader[j].id] = rowEm[j].innerHTML;	// data value
+		}
+		console.log(JSON.stringify(arrRow));
+	};
+	
     return McGrid;
 })();
+

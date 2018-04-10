@@ -59,7 +59,8 @@
 			// mcGrid 헤더 필드 선언
 			var mcHeader = [
 				  {id: "SUBJECT", title: "제목", colSize: 5, align: "left"}
-				, {id: "TIME"	, title: "시간", colSize: 3, align: "center"}
+				, {id: "TIME"	, title: "시간", colSize: 2, align: "center"}
+				, {id: "BTN"	, title: "버튼", colSize: 1, align: "center", type: "button"}
 			];
 			// mcGrid 기본값 설정
 			var mcDefault = {
@@ -75,7 +76,8 @@
 			var mcGrid = new McGrid("mcGrid1");
 			mcGrid.setDefault(mcDefault);
 			mcGrid.setHeader(mcHeader);
-			mcGrid.addEvent('rowClick', mcGrid1_RowClick);
+			//mcGrid.addEvent('rowClick', mcGrid1_RowClick);
+			mcGrid.addEvent('cellClick', mcGrid1_CellClick);
 			mcGrid.addEvent('pageClick', mcGrid1_PageClick);
 			
 
@@ -83,6 +85,11 @@
 				console.log('mcGrid1_rowClick');
 				console.log(rowObj, rowIdx);
 			}
+			function mcGrid1_CellClick(rowObj, cellIdx) {
+				console.log('mcGrid1_cellClick');
+				console.log(rowObj, cellIdx);
+			}
+
 			function mcGrid1_PageClick(pageNum, start, end) {
 				console.log('mcGrid1_PageClick');
 				console.log(pageNum);
