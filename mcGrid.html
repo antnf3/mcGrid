@@ -64,10 +64,10 @@
 			];
 			// mcGrid 기본값 설정
 			var mcDefault = {
-				  headerResize: true
-				, headerSort: true
-				, rowNum: true
-				, paging: true
+				  headerResize: false
+				, headerSort: false
+				, rowNum: false
+				, paging: false
 				, maxPageCnt: 5
 				, maxListCnt: 50
 				, lineHeight: "25px"
@@ -109,7 +109,7 @@
 				});
 				mcGrid.setList(cArrList, arrList.length);
 			}
-			fnSearch(1, 50);
+			fnSearch(1, 5);
 		</script>
 	</body>
 </html>
